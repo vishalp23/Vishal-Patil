@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase, MapPin, Calendar } from 'lucide-react';
+import { Briefcase, MapPin, Calendar, GraduationCap } from 'lucide-react';
 import Card from '../components/common/Card';
 import Badge from '../components/common/Badge';
 import { experiences } from '../data/experiences';
@@ -37,10 +37,10 @@ const Experience: React.FC = () => {
           className="text-center mb-16"
         >
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Work Experience
+            Experience & Education
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            My professional journey and the roles I've had the privilege to work in
+            My professional journey, work experience, and educational background
           </p>
         </motion.div>
 
@@ -123,6 +123,78 @@ const Experience: React.FC = () => {
               </div>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* Education Section */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-20"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+            Education
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <Card className="p-6 hover:shadow-lg transition-shadow h-full">
+                <div className="flex items-start mb-4">
+                  <GraduationCap className="text-primary-600 mr-3 mt-1 flex-shrink-0" size={24} />
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900">
+                      Master of Science, Computer Science
+                    </h3>
+                    <p className="text-lg text-primary-600 font-semibold">
+                      University of Colorado
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center text-sm text-gray-600 mb-4">
+                  <Calendar size={16} className="mr-1" />
+                  Aug 2022 - May 2024
+                </div>
+                <p className="text-gray-700">
+                  Advanced studies in computer science with focus on software engineering, 
+                  distributed systems, and research in 3D medical imaging and printing technologies.
+                </p>
+              </Card>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <Card className="p-6 hover:shadow-lg transition-shadow h-full">
+                <div className="flex items-start mb-4">
+                  <GraduationCap className="text-primary-600 mr-3 mt-1 flex-shrink-0" size={24} />
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900">
+                      Bachelor of Engineering, Computer Science
+                    </h3>
+                    <p className="text-lg text-primary-600 font-semibold">
+                      University of Pune
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center text-sm text-gray-600 mb-4">
+                  <Calendar size={16} className="mr-1" />
+                  Aug 2017 - May 2021
+                </div>
+                <p className="text-gray-700">
+                  Comprehensive study of computer science fundamentals including algorithms, 
+                  data structures, software engineering, and web development. Active member of 
+                  Computer Society of India and served as Soccer Team Captain.
+                </p>
+              </Card>
+            </motion.div>
+          </div>
         </motion.div>
 
         {/* Summary Section */}

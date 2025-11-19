@@ -19,7 +19,7 @@ const Card: React.FC<CardProps> = ({
   hover = false,
   onClick 
 }) => {
-  const baseStyles = 'bg-white rounded-lg shadow-md overflow-hidden';
+  const baseStyles = 'bg-white rounded-lg shadow-md overflow-hidden text-gray-900';
   const hoverStyles = hover ? 'transition-transform hover:shadow-lg cursor-pointer' : '';
   
   const cardVariants = {

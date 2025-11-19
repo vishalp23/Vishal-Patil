@@ -66,7 +66,7 @@ const Projects: React.FC = () => {
         >
           <div className="flex flex-wrap gap-2 justify-center">
             <Button
-              variant={filter === 'all' ? 'primary' : 'outline'}
+              variant="outline"
               size="sm"
               onClick={() => setFilter('all')}
             >
@@ -75,7 +75,7 @@ const Projects: React.FC = () => {
             {allTechnologies.slice(0, 6).map((tech) => (
               <Button
                 key={tech}
-                variant={filter === tech ? 'primary' : 'outline'}
+                variant="outline"
                 size="sm"
                 onClick={() => setFilter(tech)}
               >
@@ -103,8 +103,8 @@ const Projects: React.FC = () => {
                   />
                 )}
                 <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                  <p className="text-gray-600 mb-4 flex-grow">
+                  <h3 className="text-xl font-semibold mb-2 text-gray-900">{project.title}</h3>
+                  <p className="text-gray-700 mb-4 flex-grow">
                     {project.description}
                   </p>
 

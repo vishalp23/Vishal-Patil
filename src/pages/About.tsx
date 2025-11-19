@@ -3,25 +3,27 @@
  * Information about skills, background, and interests
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Code2, Database, Globe, Smartphone } from 'lucide-react';
 import Card from '../components/common/Card';
 import Badge from '../components/common/Badge';
 
 const About: React.FC = () => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
   const skills = {
-    frontend: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Vue.js', 'HTML/CSS'],
-    backend: ['Node.js', 'Express', 'Python', 'Django', 'REST APIs', 'GraphQL'],
-    database: ['MongoDB', 'PostgreSQL', 'MySQL', 'Redis', 'Firebase'],
-    tools: ['Git', 'Docker', 'AWS', 'CI/CD', 'Jest', 'Webpack'],
+    languages: ['Go', 'Python', 'TypeScript', 'Rust', 'C/C++', 'Java', 'JavaScript'],
+    backend: ['RESTful APIs', 'gRPC', 'Microservices', 'Redis', 'PostgreSQL', 'Docker', 'Kubernetes', 'GORM', 'Prisma'],
+    cloud: ['AWS', 'Terraform', 'Nginx', 'Git', 'CI/CD', 'GitHub Actions', 'Prometheus', 'Playwright'],
+    frontend: ['React', 'React Native', 'TypeScript', 'HTML5', 'CSS', 'Three.js'],
   };
 
   const skillCategories = [
-    { title: 'Frontend', icon: Globe, skills: skills.frontend, color: 'primary' },
-    { title: 'Backend', icon: Code2, skills: skills.backend, color: 'info' },
-    { title: 'Database', icon: Database, skills: skills.database, color: 'success' },
-    { title: 'Tools & DevOps', icon: Smartphone, skills: skills.tools, color: 'warning' },
+    { title: 'Languages', icon: Code2, skills: skills.languages, color: 'primary' },
+    { title: 'Backend & Database', icon: Database, skills: skills.backend, color: 'info' },
+    { title: 'Cloud & DevOps', icon: Smartphone, skills: skills.cloud, color: 'success' },
+    { title: 'Frontend', icon: Globe, skills: skills.frontend, color: 'warning' },
   ];
 
   const containerVariants = {
@@ -67,31 +69,50 @@ const About: React.FC = () => {
           <Card className="p-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="md:col-span-1">
-                <div className="w-48 h-48 mx-auto bg-gradient-to-br from-primary-400 to-primary-600 rounded-full flex items-center justify-center text-white text-6xl font-bold">
-                  VP
+                <div className="relative w-48 h-48 mx-auto rounded-full overflow-hidden bg-gradient-to-br from-primary-400 to-primary-600 shadow-xl ring-4 ring-primary-100">
+                  {/* Fallback initials - shown if image doesn't exist or fails to load */}
+                  {(!imageLoaded || imageError) && (
+                    <div className="absolute inset-0 w-full h-full flex items-center justify-center text-white text-6xl font-bold">
+                      VP
+                    </div>
+                  )}
+                  <img 
+                    src="/vishal1.png" 
+                    alt="Vishal Patil" 
+                    className={`w-full h-full object-cover relative z-10 ${imageLoaded && !imageError ? 'block' : 'hidden'}`}
+                    onError={() => {
+                      setImageError(true);
+                      setImageLoaded(false);
+                    }}
+                    onLoad={() => {
+                      setImageLoaded(true);
+                      setImageError(false);
+                    }}
+                  />
                 </div>
               </div>
               <div className="md:col-span-2">
                 <h2 className="text-2xl font-bold mb-4">Hello! I'm Vishal Patil</h2>
                 <div className="space-y-4 text-gray-700">
                   <p>
-                    I'm a Full Stack Developer with a passion for building modern, responsive,
-                    and user-friendly web applications. With several years of experience in the
-                    industry, I've had the opportunity to work on a diverse range of projects,
-                    from small business websites to large-scale enterprise applications.
+                    I'm a Software Engineer with a passion for building scalable, high-performance 
+                    systems and exceptional digital experiences. With experience in full-stack 
+                    development, cloud architecture, and AI/ML, I've worked on diverse projects 
+                    from healthcare SaaS platforms to research applications in medical imaging.
                   </p>
                   <p>
-                    My journey in web development started with a curiosity about how websites work,
-                    and it has evolved into a career where I get to solve complex problems and
-                    bring creative ideas to life. I believe in writing clean, maintainable code
-                    and following best practices to ensure the longevity and scalability of the
+                    My journey in software development started with a curiosity about how systems 
+                    work, and it has evolved into a career where I architect multi-tenant platforms, 
+                    build distributed systems, and explore cutting-edge technologies like LLMs and 
+                    reinforcement learning. I believe in writing clean, maintainable code and 
+                    following best practices to ensure the longevity and scalability of the 
                     applications I build.
                   </p>
                   <p>
                     When I'm not coding, you can find me exploring new technologies, contributing
-                    to open-source projects, or sharing my knowledge with the developer community.
-                    I'm always excited to take on new challenges and collaborate with talented
-                    individuals to create amazing digital experiences.
+                    to open-source projects, or working on personal projects that push the boundaries
+                    of what's possible. I'm always excited to take on new challenges and collaborate 
+                    with talented individuals to create amazing digital experiences.
                   </p>
                 </div>
               </div>
@@ -132,44 +153,6 @@ const About: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Education & Certifications */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mt-16"
-        >
-          <h2 className="text-3xl font-bold text-center mb-12">Education</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="p-6">
-              <h3 className="text-xl font-semibold mb-2">Bachelor of Science in Computer Science</h3>
-              <p className="text-gray-600 mb-2">University Name</p>
-              <p className="text-gray-500">2013 - 2017</p>
-              <p className="mt-4 text-gray-700">
-                Studied software engineering, algorithms, data structures, and web development.
-                Graduated with honors.
-              </p>
-            </Card>
-            <Card className="p-6">
-              <h3 className="text-xl font-semibold mb-2">Certifications</h3>
-              <ul className="space-y-2 text-gray-700">
-                <li className="flex items-start">
-                  <span className="text-primary-600 mr-2">•</span>
-                  AWS Certified Solutions Architect
-                </li>
-                <li className="flex items-start">
-                  <span className="text-primary-600 mr-2">•</span>
-                  Professional Scrum Master I
-                </li>
-                <li className="flex items-start">
-                  <span className="text-primary-600 mr-2">•</span>
-                  React Developer Certification
-                </li>
-              </ul>
-            </Card>
-          </div>
-        </motion.div>
       </div>
     </div>
   );

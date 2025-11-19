@@ -4,17 +4,16 @@
  */
 
 import React from 'react';
-import { Github, Linkedin, Mail, Twitter } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { name: 'GitHub', icon: Github, url: 'https://github.com', ariaLabel: 'Visit GitHub profile' },
-    { name: 'LinkedIn', icon: Linkedin, url: 'https://linkedin.com', ariaLabel: 'Visit LinkedIn profile' },
-    { name: 'Twitter', icon: Twitter, url: 'https://twitter.com', ariaLabel: 'Visit Twitter profile' },
-    { name: 'Email', icon: Mail, url: 'mailto:contact@example.com', ariaLabel: 'Send email' },
+    { name: 'GitHub', icon: Github, url: 'https://github.com/vishalp23', ariaLabel: 'Visit GitHub profile' },
+    { name: 'LinkedIn', icon: Linkedin, url: 'https://www.linkedin.com/in/vishalvp23/', ariaLabel: 'Visit LinkedIn profile' },
+    { name: 'Email', icon: Mail, url: 'mailto:vishalp2399@gmail.com', ariaLabel: 'Send email' },
   ];
 
   return (
@@ -27,7 +26,7 @@ const Footer: React.FC = () => {
               VP
             </Link>
             <p className="mt-2 text-gray-400">
-              Building amazing web experiences with modern technologies.
+              Software Engineer building scalable systems and exceptional digital experiences.
             </p>
           </div>
 

@@ -3,50 +3,52 @@
  * Landing page with hero section and featured projects
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Code, Rocket, Zap } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Button from '../components/common/Button';
-import Card from '../components/common/Card';
-import Badge from '../components/common/Badge';
-import { projects } from '../data/projects';
+// import Card from '../components/common/Card';
+// import Badge from '../components/common/Badge';
+// import { projects } from '../data/projects';
 
 const Home: React.FC = () => {
-  const featuredProjects = projects.filter(p => p.featured);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+  // const featuredProjects = projects.filter(p => p.featured);
 
-  const features = [
-    {
-      icon: Code,
-      title: 'Clean Code',
-      description: 'Writing maintainable and scalable code following best practices',
-    },
-    {
-      icon: Rocket,
-      title: 'Fast Performance',
-      description: 'Optimized applications for the best user experience',
-    },
-    {
-      icon: Zap,
-      title: 'Modern Stack',
-      description: 'Using cutting-edge technologies and frameworks',
-    },
-  ];
+  // const features = [
+  //   {
+  //     icon: Code,
+  //     title: 'Clean Code',
+  //     description: 'Writing maintainable and scalable code following best practices',
+  //   },
+  //   {
+  //     icon: Rocket,
+  //     title: 'Fast Performance',
+  //     description: 'Optimized applications for the best user experience',
+  //   },
+  //   {
+  //     icon: Zap,
+  //     title: 'Modern Stack',
+  //     description: 'Using cutting-edge technologies and frameworks',
+  //   },
+  // ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
+  // const containerVariants = {
+  //   hidden: { opacity: 0 },
+  //   visible: {
+  //     opacity: 1,
+  //     transition: {
+  //       staggerChildren: 0.2,
+  //     },
+  //   },
+  // };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
+  // const itemVariants = {
+  //   hidden: { opacity: 0, y: 20 },
+  //   visible: { opacity: 1, y: 0 },
+  // };
 
   return (
     <div className="bg-gradient-to-b from-gray-50 to-white">
@@ -57,32 +59,79 @@ const Home: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              Hi, I'm <span className="text-primary-600">Vishal Patil</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Full Stack Developer specializing in building exceptional digital experiences
-              with modern web technologies
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/projects">
-                <Button size="lg">
-                  View My Work <ArrowRight className="ml-2" size={20} />
-                </Button>
-              </Link>
-              <Link to="/contact">
-                <Button size="lg" variant="outline">
-                  Get In Touch
-                </Button>
-              </Link>
+            {/* Left Content */}
+            <div className="text-left">
+              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+                Hi, I am
+                <br />
+                <span className="text-primary-600">Vishal</span>
+              </h1>
+              <h2 className="text-2xl md:text-3xl text-gray-400 mb-8">
+                I'm a...
+              </h2>
+
+              <div className="space-y-3 mb-8">
+                <p className="text-lg text-gray-600">
+                  Software developer passionate about solving real problems
+                </p>
+                <p className="text-lg text-gray-600">
+                  Building intelligent systems that scale
+                </p>
+                <p className="text-lg text-gray-600">
+                  Focused on writing clean, maintainable code
+                </p>
+                <p className="text-lg text-gray-600">
+                  Always learning and exploring new solutions
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link to="/projects">
+                  <Button variant="outline" size="lg">
+                    View My Work <ArrowRight className="ml-2" size={20} />
+                  </Button>
+                </Link>
+                <Link to="/contact">
+                  <Button variant="outline" size="lg">
+                    Contact Me <ArrowRight className="ml-2" size={20} />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+            {/* Right Content - Profile Image */}
+            <div className="flex justify-center lg:justify-end">
+              <div className="relative w-80 h-80 rounded-full overflow-hidden bg-gradient-to-br from-primary-400 to-primary-600 shadow-xl ring-4 ring-primary-100">
+                {/* Fallback initials - shown if image doesn't exist or fails to load */}
+                {(!imageLoaded || imageError) && (
+                  <div className="absolute inset-0 w-full h-full flex items-center justify-center text-white text-7xl font-bold">
+                    VP
+                  </div>
+                )}
+                <img
+                  src="/public/vishal.jpeg"
+                  alt="Vishal Patil"
+                  className={`w-full h-full object-cover relative z-10 ${
+                    imageLoaded && !imageError ? "block" : "hidden"
+                  }`}
+                  onError={() => {
+                    setImageError(true);
+                    setImageLoaded(false);
+                  }}
+                  onLoad={() => {
+                    setImageLoaded(true);
+                    setImageError(false);
+                  }}
+                />
+              </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Features Section
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -110,10 +159,10 @@ const Home: React.FC = () => {
             })}
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Featured Projects Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      {/* <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
@@ -142,8 +191,8 @@ const Home: React.FC = () => {
                       />
                     )}
                     <div className="p-6">
-                      <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                      <p className="text-gray-600 mb-4">{project.description}</p>
+                      <h3 className="text-xl font-semibold mb-2 text-gray-900">{project.title}</h3>
+                      <p className="text-gray-700 mb-4">{project.description}</p>
                       <div className="flex flex-wrap gap-2">
                         {project.technologies.map((tech) => (
                           <Badge key={tech} variant="primary">
@@ -156,18 +205,18 @@ const Home: React.FC = () => {
                 </motion.div>
               ))}
             </div>
-            <div className="text-center">
+            <div className="text-center mt-8">
               <Link to="/projects">
-                <Button variant="outline">
+                <Button variant="outline" size="lg" className="shadow-sm">
                   View All Projects <ArrowRight className="ml-2" size={20} />
                 </Button>
               </Link>
             </div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
-      {/* CTA Section */}
+      {/* CTA Section
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-primary-600 text-white">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
@@ -189,7 +238,7 @@ const Home: React.FC = () => {
             </Link>
           </motion.div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };
