@@ -52,7 +52,7 @@ const Experience: React.FC = () => {
           className="relative"
         >
           {/* Timeline line */}
-          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-primary-200" />
+          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-primary-400" />
 
           {experiences.map((exp, index) => (
             <motion.div
@@ -60,14 +60,25 @@ const Experience: React.FC = () => {
               variants={itemVariants}
               className="relative mb-12 last:mb-0"
             >
-              <div className={`md:flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+              <div
+                className={`md:flex items-center ${
+                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                }`}
+              >
                 {/* Content */}
-                <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
+                <div
+                  className={`md:w-1/2 ${
+                    index % 2 === 0 ? "md:pr-8" : "md:pl-8"
+                  }`}
+                >
                   <Card className="p-6 hover:shadow-lg transition-shadow">
                     {/* Company and Position */}
                     <div className="mb-4">
                       <div className="flex items-start mb-2">
-                        <Briefcase className="text-primary-600 mr-2 mt-1 flex-shrink-0" size={20} />
+                        <Briefcase
+                          className="text-primary-600 mr-2 mt-1 flex-shrink-0"
+                          size={20}
+                        />
                         <div>
                           <h3 className="text-xl font-bold text-gray-900">
                             {exp.position}
@@ -114,8 +125,8 @@ const Experience: React.FC = () => {
                 </div>
 
                 {/* Timeline dot */}
-                <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2">
-                  <div className="w-4 h-4 bg-primary-600 rounded-full border-4 border-white shadow" />
+                <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 z-10">
+                  <div className="w-6 h-6 bg-gray-600 rounded-full border-4 border-white shadow-xl" />
                 </div>
 
                 {/* Spacer */}
@@ -145,7 +156,10 @@ const Experience: React.FC = () => {
             >
               <Card className="p-6 hover:shadow-lg transition-shadow h-full">
                 <div className="flex items-start mb-4">
-                  <GraduationCap className="text-primary-600 mr-3 mt-1 flex-shrink-0" size={24} />
+                  <GraduationCap
+                    className="text-primary-600 mr-3 mt-1 flex-shrink-0"
+                    size={24}
+                  />
                   <div>
                     <h3 className="text-xl font-bold text-gray-900">
                       Master of Science, Computer Science
@@ -160,8 +174,9 @@ const Experience: React.FC = () => {
                   Aug 2022 - May 2024
                 </div>
                 <p className="text-gray-700">
-                  Advanced studies in computer science with focus on software engineering, 
-                  distributed systems, and research in 3D medical imaging and printing technologies.
+                  Advanced studies in computer science with focus on software
+                  engineering, distributed systems, and research in 3D medical
+                  imaging and printing technologies.
                 </p>
               </Card>
             </motion.div>
@@ -173,7 +188,10 @@ const Experience: React.FC = () => {
             >
               <Card className="p-6 hover:shadow-lg transition-shadow h-full">
                 <div className="flex items-start mb-4">
-                  <GraduationCap className="text-primary-600 mr-3 mt-1 flex-shrink-0" size={24} />
+                  <GraduationCap
+                    className="text-primary-600 mr-3 mt-1 flex-shrink-0"
+                    size={24}
+                  />
                   <div>
                     <h3 className="text-xl font-bold text-gray-900">
                       Bachelor of Engineering, Computer Science
@@ -188,34 +206,17 @@ const Experience: React.FC = () => {
                   Aug 2017 - May 2021
                 </div>
                 <p className="text-gray-700">
-                  Comprehensive study of computer science fundamentals including algorithms, 
-                  data structures, software engineering, and web development. Active member of 
-                  Computer Society of India and served as Soccer Team Captain.
+                  Comprehensive study of computer science fundamentals including
+                  algorithms, data structures, software engineering, and web
+                  development. Active member of Computer Society of India and
+                  served as Soccer Team Captain.
                 </p>
               </Card>
             </motion.div>
           </div>
         </motion.div>
 
-        {/* Summary Section */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mt-16"
-        >
-          <Card className="p-8 bg-gradient-to-br from-primary-50 to-blue-50">
-            <h2 className="text-2xl font-bold text-center mb-4">
-              Want to Work Together?
-            </h2>
-            <p className="text-center text-gray-700 max-w-2xl mx-auto">
-              I'm always interested in hearing about new opportunities and projects.
-              Feel free to reach out if you'd like to collaborate or just have a chat
-              about technology!
-            </p>
-          </Card>
-        </motion.div>
+        
       </div>
     </div>
   );

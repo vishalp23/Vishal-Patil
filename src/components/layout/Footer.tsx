@@ -18,40 +18,40 @@ const Footer: React.FC = () => {
 
   return (
     <footer className="bg-gray-900 text-white" role="contentinfo">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Brand Section */}
           <div>
-            <Link to="/" className="text-2xl font-bold text-primary-400 hover:text-primary-300 transition-colors">
+            <Link to="/" className="text-xl font-bold text-primary-400 hover:text-primary-300 transition-colors">
               VP
             </Link>
-            <p className="mt-2 text-gray-400">
+            <p className="mt-1 text-sm text-gray-400">
               Software Engineer building scalable systems and exceptional digital experiences.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-base font-semibold mb-2">Quick Links</h3>
             <nav aria-label="Footer navigation">
-              <ul className="space-y-2">
+              <ul className="space-y-1">
                 <li>
-                  <Link to="/about" className="text-gray-400 hover:text-white transition-colors">
+                  <Link to="/about" className="text-sm text-gray-400 hover:text-white transition-colors">
                     About
                   </Link>
                 </li>
                 <li>
-                  <Link to="/projects" className="text-gray-400 hover:text-white transition-colors">
+                  <Link to="/projects" className="text-sm text-gray-400 hover:text-white transition-colors">
                     Projects
                   </Link>
                 </li>
                 <li>
-                  <Link to="/experience" className="text-gray-400 hover:text-white transition-colors">
+                  <Link to="/experience" className="text-sm text-gray-400 hover:text-white transition-colors">
                     Experience
                   </Link>
                 </li>
                 <li>
-                  <Link to="/contact" className="text-gray-400 hover:text-white transition-colors">
+                  <Link to="/contact" className="text-sm text-gray-400 hover:text-white transition-colors">
                     Contact
                   </Link>
                 </li>
@@ -61,8 +61,8 @@ const Footer: React.FC = () => {
 
           {/* Social Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Connect</h3>
-            <div className="flex space-x-4">
+            <h3 className="text-base font-semibold mb-2">Connect</h3>
+            <div className="flex space-x-3">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
                 return (
@@ -74,7 +74,7 @@ const Footer: React.FC = () => {
                     className="text-gray-400 hover:text-white transition-colors"
                     aria-label={social.ariaLabel}
                   >
-                    <Icon size={24} />
+                    <Icon size={20} />
                   </a>
                 );
               })}
@@ -83,7 +83,7 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Copyright */}
-        <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
+        <div className="mt-4 pt-4 border-t border-gray-800 text-center text-sm text-gray-400">
           <p>© {currentYear} Vishal Patil. All rights reserved.</p>
         </div>
       </div>
