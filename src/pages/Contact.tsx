@@ -233,6 +233,7 @@ const Contact: React.FC = () => {
                 <Button
                   type="submit"
                   size="lg"
+                  variant="outline"
                   isLoading={isSubmitting}
                   disabled={isSubmitting}
                   className="w-full md:w-auto"
