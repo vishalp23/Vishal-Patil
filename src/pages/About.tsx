@@ -120,7 +120,7 @@ const About: React.FC = () => {
                     </div>
                     <div className="flex flex-wrap gap-2">
                       {category.skills.map((skill) => (
-                        <Badge key={skill} variant={category.color as any}>
+                        <Badge key={skill} variant="primary">
                           {skill}
                         </Badge>
                       ))}
