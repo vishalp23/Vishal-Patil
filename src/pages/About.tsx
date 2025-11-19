@@ -77,7 +77,7 @@ const About: React.FC = () => {
                     </div>
                   )}
                   <img 
-                    src="/vishal1.png" 
+                    src={`${import.meta.env.BASE_URL}vishal1.png`} 
                     alt="Vishal Patil" 
                     className={`w-full h-full object-cover relative z-10 ${imageLoaded && !imageError ? 'block' : 'hidden'}`}
                     onError={() => {

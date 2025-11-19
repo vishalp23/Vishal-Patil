@@ -111,7 +111,7 @@ const Home: React.FC = () => {
                   </div>
                 )}
                 <img
-                  src="/public/vishal.jpeg"
+                  src={`${import.meta.env.BASE_URL}vishal.jpeg`}
                   alt="Vishal Patil"
                   className={`w-full h-full object-cover relative z-10 ${
                     imageLoaded && !imageError ? "block" : "hidden"
