@@ -11,9 +11,11 @@ import Projects from './pages/Projects';
 import Experience from './pages/Experience';
 import Contact from './pages/Contact';
 
+const basename = import.meta.env.BASE_URL ?? '/';
+
 function App() {
   return (
-    <Router>
+    <Router basename={basename}>
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -28,4 +30,3 @@ function App() {
 }
 
 export default App;
-
