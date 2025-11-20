@@ -50,11 +50,5 @@ export const projects: Project[] = [
     technologies: ['Python'],
     githubUrl: 'https://github.com/vishalp23/TO_DO_LIST_AGENT',
   },
-  {
-    id: '7',
-    title: 'React Tutorial',
-    description: 'Comprehensive React.js tutorial repository for learning modern React development patterns.',
-    technologies: ['JavaScript', 'React'],
-    githubUrl: 'https://github.com/vishalp23/React-Tutorial',
-  },
+
 ];
